@@ -38,6 +38,43 @@ public final class TuningOpModes {
         if (DISABLED) return;
 
         DriveViewFactory dvf;
+        if (DRIVE_CLASS.equals(OctoQuadDrive.class)) {
+            dvf = hardwareMap -> {
+                OctoQuadDrive drive = new OctoQuadDrive(hardwareMap, new Pose2d(0, 0, 0));
+
+                List<Encoder> leftEncs = new ArrayList<>(), rightEncs = new ArrayList<>();
+                List<Encoder> parEncs = new ArrayList<>(), perpEncs = new ArrayList<>();
+                parEncs.add(new LocalizationSensorEncoder(drive.octoquad, false, drive.leftBack));
+                perpEncs.add(new LocalizationSensorEncoder(drive.octoquad, true, drive.leftBack));
+
+                return new DriveView(
+                        DriveType.MECANUM,
+                        MecanumDrive.PARAMS.inPerTick,
+                        MecanumDrive.PARAMS.maxWheelVel,
+                        MecanumDrive.PARAMS.minProfileAccel,
+                        MecanumDrive.PARAMS.maxProfileAccel,
+                        hardwareMap.getAll(LynxModule.class),
+                        Arrays.asList(
+                                drive.leftFront,
+                                drive.leftBack
+                        ),
+                        Arrays.asList(
+                                drive.rightFront,
+                                drive.rightBack
+                        ),
+                        leftEncs,
+                        rightEncs,
+                        parEncs,
+                        perpEncs,
+                        drive.lazyImu,
+                        drive.voltageSensor,
+                        () -> new MotorFeedforward(MecanumDrive.PARAMS.kS,
+                                MecanumDrive.PARAMS.kV / MecanumDrive.PARAMS.inPerTick,
+                                MecanumDrive.PARAMS.kA / MecanumDrive.PARAMS.inPerTick)
+                );
+            };
+
+        }
         if (DRIVE_CLASS.equals(PinpointDrive.class)) {
                 dvf = hardwareMap -> {
                     PinpointDrive pd = new PinpointDrive(hardwareMap, new Pose2d(0, 0, 0));
