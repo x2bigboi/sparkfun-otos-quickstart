@@ -12,6 +12,8 @@ import com.qualcomm.robotcore.eventloop.opmode.OpModeRegistrar;
 
 import org.firstinspires.ftc.robotcore.internal.opmode.OpModeMeta;
 import org.firstinspires.ftc.teamcode.*;
+import org.firstinspires.ftc.teamcode.tuning.otos.OTOSHeadingOffsetTuner;
+import org.firstinspires.ftc.teamcode.tuning.otos.OTOSPositionOffsetTuner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -74,8 +76,7 @@ public final class TuningOpModes {
                 );
             };
 
-        }
-        if (DRIVE_CLASS.equals(PinpointDrive.class)) {
+        } else if (DRIVE_CLASS.equals(PinpointDrive.class)) {
                 dvf = hardwareMap -> {
                     PinpointDrive pd = new PinpointDrive(hardwareMap, new Pose2d(0, 0, 0));
 
@@ -145,6 +146,10 @@ public final class TuningOpModes {
                                 MecanumDrive.PARAMS.kA / MecanumDrive.PARAMS.inPerTick)
                 );
             };
+
+            // register OTOS-specific tuning opmodes
+            manager.register(metaForClass(OTOSHeadingOffsetTuner.class), OTOSHeadingOffsetTuner.class);
+            manager.register(metaForClass(OTOSPositionOffsetTuner.class), OTOSPositionOffsetTuner.class);
         } else if (DRIVE_CLASS.equals(MecanumDrive.class)) {
             dvf = hardwareMap -> {
                 MecanumDrive md = new MecanumDrive(hardwareMap, new Pose2d(0, 0, 0));
@@ -255,6 +260,8 @@ public final class TuningOpModes {
         manager.register(metaForClass(ManualFeedbackTuner.class), ManualFeedbackTuner.class);
         manager.register(metaForClass(SplineTest.class), SplineTest.class);
         manager.register(metaForClass(LocalizationTest.class), LocalizationTest.class);
+
+        manager.register(metaForClass(AngularScalarTuner.class), AngularScalarTuner.class);
 
         FtcDashboard.getInstance().withConfigRoot(configRoot -> {
             for (Class<?> c : Arrays.asList(
