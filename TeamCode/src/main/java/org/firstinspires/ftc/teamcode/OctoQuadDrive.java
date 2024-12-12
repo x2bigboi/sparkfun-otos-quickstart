@@ -40,6 +40,9 @@ public class OctoQuadDrive extends MecanumDrive {
 
         public int odometryPortY = 2;
 
+        // TODO explain
+        public double angularScalar = 1.0;
+
         /*
         Set the odometry pod positions relative to the point that the odometry computer tracks around.
         The X pod offset refers to how far sideways from the tracking point the
@@ -109,6 +112,8 @@ public class OctoQuadDrive extends MecanumDrive {
 
         octoquad.setLocalizerCountsPerMM_X((float) PARAMS.encoderResolution);
         octoquad.setLocalizerCountsPerMM_Y((float) PARAMS.encoderResolution);
+
+        octoquad.setLocalizerImuHeadingScalar((float) PARAMS.angularScalar);
 
 
         /*
