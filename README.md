@@ -79,12 +79,12 @@ The default is for the forward and back/parallel/X pod to be in port 1 (not 0),
 and the strafe/perpendicular/Y pod to be in port 2.
 These can however easily be changed.
 
-
+## Software
 
 Change the drive class in TuningOpModes, SplineTest,
 and your op modes to the drive class you're using (PinpointDrive or OctoQuadDrive)
 
-Ensure you configure your sensor with the same name as it is set to at the top of each drive class. 
+Ensure you configure your sensor with the same name as is set at the top of each drive class. 
 The default name is `pinpoint` for the Pinpoint and `octoquad` for the OctoQuad.
 
 Make sure that the sensor is configured under the Roadrunner Driver variant.
