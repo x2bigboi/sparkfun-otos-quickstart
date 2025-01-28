@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public final class TuningOpModes {
-    public static final Class<?> DRIVE_CLASS = SparkFunOTOSDrive.class; // TODO: change to your drive class i.e. PinpointDrive if using pinpoint
+    public static final Class<?> DRIVE_CLASS = OctoQuadDrive.class; // TODO: change to your drive class i.e. PinpointDrive if using pinpoint
 
     public static final String GROUP = "quickstart";
     public static final boolean DISABLED = false;
@@ -46,8 +46,8 @@ public final class TuningOpModes {
 
                 List<Encoder> leftEncs = new ArrayList<>(), rightEncs = new ArrayList<>();
                 List<Encoder> parEncs = new ArrayList<>(), perpEncs = new ArrayList<>();
-                parEncs.add(new LocalizationSensorEncoder(drive.octoquad, false, drive.leftBack));
-                perpEncs.add(new LocalizationSensorEncoder(drive.octoquad, true, drive.leftBack));
+                parEncs.add(new LocalizationSensorEncoder(drive.localSensor, false, drive.leftBack));
+                perpEncs.add(new LocalizationSensorEncoder(drive.localSensor, true, drive.leftBack));
 
                 return new DriveView(
                         DriveType.MECANUM,

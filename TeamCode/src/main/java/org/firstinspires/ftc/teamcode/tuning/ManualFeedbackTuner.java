@@ -24,8 +24,7 @@ public final class ManualFeedbackTuner extends LinearOpMode {
                                 .build());
             }
 
-        }
-        if (TuningOpModes.DRIVE_CLASS.equals(PinpointDrive.class)) {
+        } else if (TuningOpModes.DRIVE_CLASS.equals(PinpointDrive.class)) {
             PinpointDrive drive = new PinpointDrive(hardwareMap, new Pose2d(0, 0, 0));
 
             waitForStart();
