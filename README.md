@@ -25,9 +25,8 @@ This is no longer correct, but at this point changing the url would break many l
 This quickstart has not been extensively tested, and you are likely to encounter bugs and issues.
 If this happens, or if there's anything you're confused about or don't understand, the best way to
 get help is
-making a post in roadrunner-help on the FTC Discord with your MecanumDrive and SparkFunOTOSDrive
-attached and pinging me
-(@j5155).
+making a post in roadrunner-help on the FTC Discord with your MecanumDrive and sensor-specific drive class
+attached and pinging me (@j5155).
 If you're certain that you've found a bug,
 or you have a feature request, you may also make an issue in the Issues tab above.
 
@@ -107,10 +106,9 @@ Use DeadWheelDirectionDebugger to properly reverse your dead wheels in your sens
 Measure your odometry offsets **manually** (with a tape measure).
 Note that AngularRampLogger cannot automatically tune them.
 
-The X pod offset refers to how far **sideways** from the center the X (forward) odometry pod is.
-Left of the center is a positive number, right of the center is a negative number.
-The Y pod offset refers to how far **forwards** from the center the Y (strafe) odometry pod is:
-forward of the center is a positive number, backwards is a negative number.
+The way in which odometry offsets work is device-specific. 
+Review the quickstart guide for the device you are using for a full explanation;
+alternately, some slight trial and error with Localization Test may be easiest. 
 
 Your offsets don't need to be perfect.
 Any error will show up as the robot orbiting around a point on FTC Dashboard when spinning in place IRL.
