@@ -6,9 +6,7 @@ import static com.qualcomm.hardware.rev.RevHubOrientationOnRobot.zyxOrientation;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.Pose2d;
-import com.acmerobotics.roadrunner.PoseVelocity2d;
 import com.acmerobotics.roadrunner.ftc.FlightRecorder;
-import com.acmerobotics.roadrunner.ftc.GoBildaPinpointDriverRR;
 import com.acmerobotics.roadrunner.ftc.LazyImu;
 import com.acmerobotics.roadrunner.ftc.LocalizationSensor;
 import com.acmerobotics.roadrunner.ftc.octoquad.OctoQuad;
@@ -17,7 +15,6 @@ import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import org.firstinspires.ftc.teamcode.messages.PoseMessage;
 
 /**
  * Experimental extension of MecanumDrive that uses the OctoQuad sensor for localization.
@@ -51,6 +48,7 @@ public class OctoQuadDrive extends AbsoluteLocalizerDrive {
         Left of the center is a positive number, right of the center is a negative number.
         The Y pod offset refers to how far forwards from the center the Y (strafe) odometry pod is:
         forward of the center is a positive number, backwards is a negative number.
+        See the OctoQuad quickstart guide for a better explanation.
          */
         // These are tuned for 3110-0002-0001 Product Insight #1
         public double xOffset = -5.24373777; // inches
