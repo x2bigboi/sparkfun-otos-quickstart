@@ -9,7 +9,6 @@ import com.acmerobotics.roadrunner.Pose2d;
 import com.acmerobotics.roadrunner.ftc.FlightRecorder;
 import com.acmerobotics.roadrunner.ftc.LazyImu;
 import com.acmerobotics.roadrunner.ftc.LocalizationSensor;
-import com.acmerobotics.roadrunner.ftc.octoquad.OctoQuad;
 import com.acmerobotics.roadrunner.ftc.octoquad.OctoQuadFWv3;
 import com.acmerobotics.roadrunner.ftc.octoquad.OctoQuadRR;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;

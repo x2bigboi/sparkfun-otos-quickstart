@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.acmerobotics.roadrunner.ftc.octoquad.OctoQuad;
 import com.acmerobotics.roadrunner.ftc.octoquad.OctoQuadFWv3;
 import com.acmerobotics.roadrunner.ftc.octoquad.OctoQuadRR;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
