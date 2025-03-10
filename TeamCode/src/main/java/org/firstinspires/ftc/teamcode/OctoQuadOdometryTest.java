@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.acmerobotics.roadrunner.ftc.octoquad.OctoQuad;
+import com.acmerobotics.roadrunner.ftc.octoquad.OctoQuadFWv3;
+import com.acmerobotics.roadrunner.ftc.octoquad.OctoQuadRR;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -16,7 +18,7 @@ public class OctoQuadOdometryTest extends LinearOpMode
 
     public void runOpMode()
     {
-        OctoQuad oq = hardwareMap.get(OctoQuad.class, "octoquad");
+        OctoQuadFWv3 oq = hardwareMap.get(OctoQuadRR.class, "octoquad");
         /*
         SkyStoneDriveBase base;
         base = new SkyStoneDriveBase();
@@ -26,8 +28,8 @@ public class OctoQuadOdometryTest extends LinearOpMode
 
         telemetry.setMsTransmissionInterval(50);
 
-        oq.setSingleEncoderDirection(OQ_PORT_X, OctoQuad.EncoderDirection.FORWARD);
-        oq.setSingleEncoderDirection(OQ_PORT_Y, OctoQuad.EncoderDirection.REVERSE);
+        oq.setSingleEncoderDirection(OQ_PORT_X, OctoQuadFWv3.EncoderDirection.FORWARD);
+        oq.setSingleEncoderDirection(OQ_PORT_Y, OctoQuadFWv3.EncoderDirection.REVERSE);
         oq.setLocalizerPortX(OQ_PORT_X);
         oq.setLocalizerPortY(OQ_PORT_Y);
         oq.setLocalizerCountsPerMM_X(TICKS_PER_MM);
@@ -36,7 +38,7 @@ public class OctoQuadOdometryTest extends LinearOpMode
         oq.setLocalizerTcpOffsetMM_Y(Y_OFFSET_FROM_CENTER_MM);
         oq.setLocalizerImuHeadingScalar(OQ_IMU_SCALAR);
         oq.setLocalizerVelocityIntervalMS(25);
-        oq.resetLocalizer();
+        oq.resetLocalizerAndCalibrateIMU();
 
         while (opModeInInit())
         {
@@ -45,9 +47,9 @@ public class OctoQuadOdometryTest extends LinearOpMode
             telemetry.update();
         }
 
-        OctoQuad.LocalizerDataBlock localizer = new OctoQuad.LocalizerDataBlock();
+        OctoQuadFWv3.LocalizerDataBlock localizer = new OctoQuadFWv3.LocalizerDataBlock();
         int[] encoders = new int[8];
-        OctoQuad.EncoderDataBlock encoderDataBlock = new OctoQuad.EncoderDataBlock();
+        OctoQuadFWv3.EncoderDataBlock encoderDataBlock = new OctoQuadFWv3.EncoderDataBlock();
 
         while (opModeIsActive())
         {
@@ -73,7 +75,7 @@ public class OctoQuadOdometryTest extends LinearOpMode
 
             telemetry.addData("Localizer status", localizer.localizerStatus);
 
-            if (localizer.isDataValid())
+            if (localizer.isPoseDataValid())
             {
                 telemetry.addData("Heading deg", localizer.heading_rad*180/Math.PI);
                 telemetry.addData("Heading dps", localizer.velHeading_radS*180/Math.PI);

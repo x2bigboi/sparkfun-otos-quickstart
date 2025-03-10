@@ -10,6 +10,7 @@ import com.acmerobotics.roadrunner.ftc.FlightRecorder;
 import com.acmerobotics.roadrunner.ftc.LazyImu;
 import com.acmerobotics.roadrunner.ftc.LocalizationSensor;
 import com.acmerobotics.roadrunner.ftc.octoquad.OctoQuad;
+import com.acmerobotics.roadrunner.ftc.octoquad.OctoQuadFWv3;
 import com.acmerobotics.roadrunner.ftc.octoquad.OctoQuadRR;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -69,8 +70,8 @@ public class OctoQuadDrive extends AbsoluteLocalizerDrive {
         increase when you move the robot forward. And the Y (strafe) pod should increase when
         you move the robot to the left.
          */
-        public OctoQuad.EncoderDirection xDirection = OctoQuad.EncoderDirection.FORWARD;
-        public OctoQuad.EncoderDirection yDirection = OctoQuad.EncoderDirection.REVERSE;
+        public OctoQuadFWv3.EncoderDirection xDirection = OctoQuadFWv3.EncoderDirection.FORWARD;
+        public OctoQuadFWv3.EncoderDirection yDirection = OctoQuadFWv3.EncoderDirection.REVERSE;
 
         /*
         Use the OctoQuad IMU for tuning
